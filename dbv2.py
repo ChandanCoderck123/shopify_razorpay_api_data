@@ -7,10 +7,10 @@ import json                         # For working with JSON
 
 def get_mysql_connection():
     return mysql.connector.connect(
-        host='holistique-middleware.c9wdjmzy25ra.ap-south-1.rds.amazonaws.com',
+        host='',
         user='Chandan',
-        password='Chandan@#4321',
-        database='Holistique'
+        password='',
+        database=''
     )
 
 def fetch_automate_credentials(brand=None):
@@ -32,7 +32,7 @@ def to_shopify_iso(dt_str):
     dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
     return dt.isoformat().replace("+00:00", "Z")
 
-# 2. Fetch latest 60 Shopify orders using the GraphQL API
+# 2. Fetch latest 30 Shopify orders using the GraphQL API
 def fetch_shopify_orders_paginated(SHOPIFY_GRAPHQL_URL, SHOPIFY_ACCESS_TOKEN, from_dt, to_dt, after_cursor=None, max_records=300):
     orders = []
     fetched_count = 0
